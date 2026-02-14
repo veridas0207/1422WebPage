@@ -1,0 +1,76 @@
+@import './base.css';
+@import './utilities.css';
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* 頁面轉場: opacity 0→1, y 16→0, 0.25s easeInOut */
+.page-enter-active,
+.page-leave-active {
+  transition:
+    opacity 0.25s ease-in-out,
+    transform 0.25s ease-in-out;
+}
+
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(16px);
+}
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-16px);
+}
+
+/* 捲動淡入 FadeIn 工具類 */
+.fade-in-scroll {
+  animation: fadeIn 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px); /* y 24->0 */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 卡片 Hover: y -4px */
+.hover-card {
+  transition: transform 0.2s ease;
+}
+.hover-card:hover {
+  transform: translateY(-4px);
+}
+
+/* 手風琴展開 */
+/* 雖然 Naive UI Collapse 有內建動畫，但若要自訂： */
+.accordion-enter-active,
+.accordion-leave-active {
+  transition:
+    height 0.2s ease-out,
+    opacity 0.2s ease-out;
+  overflow: hidden;
+}
+
+/* 讓所有 n-button 都有縮放過渡效果 */
+.n-button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  padding: 12px 24px !important;
+}
+
+/* 特別針對 type="primary" 的按鈕加上放大效果 */
+.n-button--primary-type:hover {
+  transform: scale(1.05);
+}
+
+.text-icon-button {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}

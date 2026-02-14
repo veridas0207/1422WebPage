@@ -1,0 +1,95 @@
+/* 添加到你的 CSS 文件中 */
+.glass-effect {
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+}
+
+/* ========================================= */
+/* 1. 亮色模式 (Light Mode) - 預設 */
+/* ========================================= */
+:root {
+  /* --- 頁面背景 --background: 220 20% 97% --- */
+  --background: 220, 20%, 97%;
+
+  /* --- 卡片背景 --card: 0 0% 100% --- */
+  --card: hsl(0, 0%, 100%);
+
+  /* --- 次要背景 --muted: 210 20% 94% --- */
+  --muted: 210, 20%, 94%;
+
+  /* --- 品牌主色 --primary: 220 60% 30% --- */
+  --color-primary: 220, 60%, 30%;
+
+  /* --- 強調色 --accent: 190 70% 42% --- */
+  --color-accent: 190, 70%, 42%;
+
+  /* --- 主要文字 --foreground: 220 30% 10% (你的說明：hover時的顏色) --- */
+  --foreground: 220, 30%, 10%;
+
+  /* --- 次要文字 --muted-foreground: 215 16% 47% --- */
+  --muted-foreground: 215, 16%, 47%;
+
+  /* --- 邊框 --border: 214 20% 88% --- */
+  --border: 214, 20%, 88%;
+
+  /* --- 錯誤/危險 --destructive: 0 84% 60% --- */
+  --destructive: 0, 84%, 60%;
+
+  /* --- 漸層定義 (Primary -> Accent) --- */
+  --text-gradient: linear-gradient(135deg, hsl(var(--color-primary)) 0%, hsl(var(--color-accent)) 100%);
+  --hero-gradient: linear-gradient(135deg, hsl(220 60% 30%) 0%, hsl(190 70% 42%) 100%);
+}
+
+/* ========================================= */
+/* 2. 暗色模式 (Dark Mode) - html.dark 生效 */
+/* ========================================= */
+html.dark {
+  /* --- 頁面背景 --background: 222 30% 8% --- */
+  --background: 222, 30%, 8%;
+
+  /* --- 卡片背景 --card: 222 25% 12% --- */
+  --card: 222, 25%, 12%;
+
+  /* (暗色模式未定義 muted，暫用 card 顏色或稍微亮一點的) */
+  --muted: 222, 30%, 15%;
+
+  /* --- 品牌主色 --primary: 190 70% 50% --- */
+  --color-primary: 190, 70%, 50%;
+
+  /* --- 強調色 --accent: 190 70% 50% --- */
+  --color-accent: 190, 70%, 50%;
+
+  /* --- 主要文字 --foreground: 210 20% 92% (Hover) --- */
+  --foreground: 210, 20%, 92%;
+
+  /* (暗色模式未定義 muted-foreground，使用略暗於主要文字的顏色) */
+  --muted-foreground: 215, 20%, 65%;
+
+  /* --- 邊框 --border: 220 20% 20% --- */
+  --border: 220, 20%, 20%;
+
+  /* (Destructive 通常不變，若要變暗可在此覆寫) */
+  --destructive: 0, 60%, 50%;
+
+  /* --- 漸層重組 --- */
+  --text-gradient: linear-gradient(135deg, hsl(222 30% 14%) 0%, hsl(190 70% 20%) 100%);
+  --hero-gradient: linear-gradient(135deg, hsl(222 30% 14%), hsl(190 70% 20%));
+}
+
+/* 文字漸層工具類 */
+.text-gradient {
+  background: var(--text-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: inline-block;
+}
+
+body {
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* 讓 body 背景跟隨定義的變數 */
+  background-color: hsl(var(--background));
+  /* 讓預設文字顏色跟隨 (雖然 Naive UI 會覆蓋，但在 Naive UI 之外的區域還是需要) */
+  color: hsl(var(--muted-foreground));
+}

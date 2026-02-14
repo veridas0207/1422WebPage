@@ -1,0 +1,81 @@
+/* Flexbox Utilities */
+.flex {
+  display: flex !important;
+}
+
+.items-center {
+  align-items: center !important;
+}
+
+.flex-col {
+  flex-direction: column !important;
+}
+
+.justify-between {
+  justify-content: space-between !important;
+}
+
+/* Spacing Utilities */
+.gap-1 {
+  gap: 4px !important;
+}
+
+.gap-2 {
+  gap: 8px !important;
+}
+
+.ml-2 {
+  margin-left: 8px !important;
+}
+
+.px-4 {
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+}
+
+.py-3 {
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+}
+
+.space-y-1 > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 4px !important;
+}
+
+/* Display Utilities */
+.hidden {
+  display: none !important;
+}
+
+.block {
+  display: block !important;
+}
+
+.inline {
+  display: inline !important;
+}
+
+:global(.dark) .glass-effect {
+  background-color: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Responsive Utilities (Mobile First) */
+
+/* sm: >= 640px */
+@media (min-width: 640px) {
+  .sm\:inline {
+    display: inline !important;
+  }
+}
+
+/* md: >= 768px */
+@media (min-width: 768px) {
+  .md\:flex {
+    display: flex !important;
+  }
+
+  .md\:hidden {
+    display: none !important;
+  }
+}
