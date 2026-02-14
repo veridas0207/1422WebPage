@@ -5,6 +5,7 @@ import { Glasses16Regular, HandLeft16Regular } from '@vicons/fluent'
 import FadeIn from '@/components/FadeIn.vue'
 
 const animateDuration = 600
+const baseUrl = import.meta.env.BASE_URL
 
 const mainRegions = [
   { label: '計算機圖學', icon: ComputerOutlined },
@@ -65,7 +66,32 @@ const mainRegions = [
       </div>
     </section>
 
-    <section class="location"></section>
+    <section class="location">
+      <n-card size="huge" class="location-card">
+        <div class="location-card-container">
+          <h2 class="location-title">實驗室位置</h2>
+          <div class="location-text">
+            <p>宏裕科技大樓 14 樓 1422 室</p>
+            <p>建議先透過 Email 與學長姐預約時間，實驗室目前以遠端為主。</p>
+          </div>
+
+          <div class="location-photo-container">
+            <div class="lab-photo">
+              <img :src="baseUrl + 'lab_photo/lab_1.jpg'" alt="Lab Photo 1" />
+            </div>
+            <div class="lab-photo">
+              <img :src="baseUrl + 'lab_photo/lab_2.jpg'" alt="Lab Photo 2" />
+            </div>
+            <div class="lab-photo">
+              <img :src="baseUrl + 'lab_photo/lab_3.jpg'" alt="Lab Photo 3" />
+            </div>
+            <div class="lab-photo">
+              <img :src="baseUrl + 'lab_photo/lab_4.jpg'" alt="Lab Photo 4" />
+            </div>
+          </div>
+        </div>
+      </n-card>
+    </section>
   </main>
 </template>
 
@@ -175,5 +201,48 @@ const mainRegions = [
   align-items: center;
   justify-content: center;
   gap: 16px;
+}
+
+.location-title {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  margin-bottom: 12px;
+}
+
+.location-text {
+  color: hsl(var(--muted-foreground));
+  line-height: 20px;
+  margin-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.location-card {
+  max-width: 998px;
+  margin: 0 auto;
+}
+.location-card-container {
+  padding: 48px;
+}
+
+.location-photo-container {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.lab-photo {
+  border-radius: 12px;
+  display: flex;
+  max-width: 442px;
+  max-height: 248px;
+}
+
+.lab-photo img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 12px;
 }
 </style>
