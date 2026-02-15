@@ -2,9 +2,10 @@
 import { NButton, NIcon, NCard } from 'naive-ui'
 import { ArrowForwardRound, ComputerOutlined, LanguageOutlined, PhoneAndroidOutlined } from '@vicons/material'
 import { Glasses16Regular, HandLeft16Regular } from '@vicons/fluent'
+import { motion } from 'motion-v'
 import FadeIn from '@/components/FadeIn.vue'
 
-const animateDuration = 600
+const animateDuration = 800
 const baseUrl = import.meta.env.BASE_URL
 
 const mainRegions = [
@@ -53,20 +54,23 @@ const mainRegions = [
     <section class="main-region">
       <h2 class="main-region-title">主要研究領域</h2>
       <div class="main-region-content">
-        <Motion v-for="value in mainRegions" :key="value.label" :initial="{ y: 0 }" :enter="{ y: 0 }" :hovered="{ y: -8 }" :transition="{ type: 'spring', stiffness: 320, damping: 24 }">
+      <FadeIn :delay="index * 100" :duration="animateDuration" :tag="'div'" v-for="(value, index) in mainRegions" :key="value.label">
+        <motion.div :initial="{ y: 0 }" :animate="{ y: 0 }" :whileHover="{ y: -8 }" :transition="{ type: 'spring', stiffness: 320, damping: 24 }">
           <n-card size="small" class="main-region-card">
             <div class="main-regin-card-content">
               <div class="main-region-icon-box">
                 <n-icon size="24" :component="value.icon" />
               </div>
-              <div>{{ value.label }}</div>
+              <div class="main-region-label">{{ value.label }}</div>
             </div>
           </n-card>
-        </Motion>
+        </motion.div>
+      </FadeIn>
       </div>
     </section>
 
-    <section class="location">
+    <section class="location">      
+    <FadeIn :duration="animateDuration" :tag="'div'">
       <n-card size="huge" class="location-card">
         <div class="location-card-container">
           <h2 class="location-title">實驗室位置</h2>
@@ -90,14 +94,14 @@ const mainRegions = [
             </div>
           </div>
         </div>
-      </n-card>
+        </n-card>      
+      </FadeIn>
     </section>
   </main>
 </template>
 
 <style scoped>
 .hero-wrap {
-  border-bottom: 1px solid hsl(var(--border));
   position: relative;
   min-height: 90vh;
 
@@ -149,6 +153,7 @@ const mainRegions = [
 .hero-description {
   line-height: 1.625;
   margin-bottom: 32px;
+  font-weight: 400;
   font-size: 18px;
   color: hsl(var(--muted-foreground));
 }
@@ -160,6 +165,8 @@ const mainRegions = [
 
 .main-region {
   padding: 84px 24px;
+  background-color: hsl(var(--card));
+  border-top: 1px solid hsl(var(--border));
 }
 
 .main-region-title {
@@ -171,6 +178,11 @@ const mainRegions = [
   line-height: 2.25rem;
 }
 
+.main-region-label {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 2px;
+}
 .main-region-card {
   width: 180px;
   padding: 32px;
@@ -203,6 +215,10 @@ const mainRegions = [
   gap: 16px;
 }
 
+.location {
+  padding: 80px 0;
+}
+
 .location-title {
   font-weight: 700;
   font-size: 24px;
@@ -217,6 +233,7 @@ const mainRegions = [
   display: flex;
   flex-direction: column;
   gap: 8px;
+  font-weight: 400;
 }
 
 .location-card {

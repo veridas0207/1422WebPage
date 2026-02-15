@@ -124,7 +124,7 @@ onUnmounted(() => {
 .header-container.is-scrolled.is-dark {
   background-color: hsla(222, 30%, 8%, 0.7);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--border); /* 使用自定義變數 */
 }
 
 /* --- Logo --- */

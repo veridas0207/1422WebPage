@@ -54,5 +54,6 @@ onMounted(() => {
 
 .footer-text {
   color: hsl(var(--muted-foreground));
+  font-weight: 400;
 }
 </style>
