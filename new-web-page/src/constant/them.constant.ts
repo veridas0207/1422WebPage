@@ -51,6 +51,8 @@ export const lightThemeOverrides: GlobalThemeOverrides = {
     borderColor: '#DCE3EB', // 卡片邊框
     paddingSmall: '0', // 卡片內距 (sm)
     paddingHuge: '0', // 卡片內距 (huge)
+    paddingLarge: '0', // 卡片內距 (lg)
+    paddingMedium: '0', // 卡片內距 (md)
     // 注意: Naive UI Card 的陰影通常由 CSS 控制，或在 light/dark theme 預設中已有
     // 若要強制陰影，可以嘗試 box-shadow (但並非所有版本都支援此變數，建議用 class)
   },
@@ -139,6 +141,8 @@ export const darkThemeOverrides: GlobalThemeOverrides = {
     borderColor: '#29303D',
     paddingSmall: '0', // 卡片內距 (sm)
     paddingHuge: '0', // 卡片內距 (huge)
+    paddingLarge: '0', // 卡片內距 (lg)
+    paddingMedium: '0', // 卡片內距 (md)
   },
 
   Button: {

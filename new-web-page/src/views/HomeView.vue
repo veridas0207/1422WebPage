@@ -1,20 +1,13 @@
 <script setup lang="ts">
 import { NButton, NIcon, NCard } from 'naive-ui'
-import { ArrowForwardRound, ComputerOutlined, LanguageOutlined, PhoneAndroidOutlined } from '@vicons/material'
-import { Glasses16Regular, HandLeft16Regular } from '@vicons/fluent'
+import { ArrowForwardRound } from '@vicons/material'
 import { motion } from 'motion-v'
 import FadeIn from '@/components/FadeIn.vue'
+import { MainRegions, LabPhotos } from '@/constant/home.constant'
 
 const animateDuration = 800
 const baseUrl = import.meta.env.BASE_URL
 
-const mainRegions = [
-  { label: '計算機圖學', icon: ComputerOutlined },
-  { label: '人機互動', icon: HandLeft16Regular },
-  { label: 'AR/VR', icon: Glasses16Regular },
-  { label: '網頁程式設計', icon: LanguageOutlined },
-  { label: '行動應用開發', icon: PhoneAndroidOutlined },
-]
 </script>
 
 <template>
@@ -54,7 +47,7 @@ const mainRegions = [
     <section class="main-region">
       <h2 class="main-region-title">主要研究領域</h2>
       <div class="main-region-content">
-      <FadeIn :delay="index * 100" :duration="animateDuration" :tag="'div'" v-for="(value, index) in mainRegions" :key="value.label">
+      <FadeIn :delay="index * 100" :duration="animateDuration" :tag="'div'" v-for="(value, index) in MainRegions" :key="value.label">
         <motion.div :initial="{ y: 0 }" :animate="{ y: 0 }" :whileHover="{ y: -8 }" :transition="{ type: 'spring', stiffness: 320, damping: 24 }">
           <n-card size="small" class="main-region-card">
             <div class="main-regin-card-content">
@@ -80,17 +73,8 @@ const mainRegions = [
           </div>
 
           <div class="location-photo-container">
-            <div class="lab-photo">
-              <img :src="baseUrl + 'lab_photo/lab_1.jpg'" alt="Lab Photo 1" />
-            </div>
-            <div class="lab-photo">
-              <img :src="baseUrl + 'lab_photo/lab_2.jpg'" alt="Lab Photo 2" />
-            </div>
-            <div class="lab-photo">
-              <img :src="baseUrl + 'lab_photo/lab_3.jpg'" alt="Lab Photo 3" />
-            </div>
-            <div class="lab-photo">
-              <img :src="baseUrl + 'lab_photo/lab_4.jpg'" alt="Lab Photo 4" />
+            <div v-for="(photo, index) in LabPhotos" :key="index" class="lab-photo">
+              <img :src="baseUrl + photo.src" :alt="photo.alt" />
             </div>
           </div>
         </div>
